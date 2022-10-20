@@ -18,7 +18,25 @@ class _ImprovedAnimationState extends State<ImprovedAnimation> with SingleTicker
   void initState() {
     super.initState();
     _animationController = AnimationController(duration: const Duration(seconds: 5), vsync: this);
-    _animation = Tween<double>(begin: 0.0, end: 2 * pi).animate(_animationController)..addListener(() => setState(() {}));
+
+    final _curvedAnimation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.bounceIn,
+      reverseCurve: Curves.easeOut
+    );
+
+    _animation = Tween<double>(begin: 0.0, end: 2 * pi).animate(_curvedAnimation)
+      ..addListener(() => setState(() {}))
+      ..addStatusListener((status) {
+        switch (status) {
+          case AnimationStatus.completed:
+            _animationController.reverse();
+            break;
+          case AnimationStatus.dismissed:
+            _animationController.forward();
+            break;
+        }
+      });
     _animationController.forward();
   }
 
