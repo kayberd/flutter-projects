@@ -1,4 +1,5 @@
 import 'package:animation/views/basic_animation.dart';
+import 'package:animation/views/improved_animation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,15 +16,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Animation trials'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -32,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const BasicAnimation();
+    // return const BasicAnimation();
+    return const ImprovedAnimation();
   }
 }

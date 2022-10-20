@@ -18,7 +18,7 @@ class _BasicAnimationState extends State<BasicAnimation> {
     return Scaffold(
       body: Transform.rotate(
         angle: _angle,
-        child: const Center(child: BlueSquare()),
+        child: const Center(child: BlueLine()),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => setState(() {
